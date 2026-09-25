@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "experiment": "two-mass stiffness contrast and discrete energy audit",
+  "units": "SI: kg, m, s, N, J",
+  "model": {
+    "mass": [
+      [
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.15
+      ]
+    ],
+    "stiffness": [
+      [
+        604.0,
+        -600.0
+      ],
+      [
+        -600.0,
+        600.0
+      ]
+    ],
+    "damped_C": [
+      [
+        0.12040000000000001,
+        -0.060000000000000005
+      ],
+      [
+        -0.060000000000000005,
+        0.069
+      ]
+    ],
+    "omega_rad_s": [
+      1.8649037793238528,
+      67.8271489441644
+    ],
+    "initial_displacement_m": [
+      0.5031688265634978,
+      0.4791104071121266
+    ],
+    "initial_velocity_m_s": [
+      0.0,
+      0.0
+    ]
+  },
+  "free_study": {
+    "dt_s": 0.05,
+    "steps": 240,
+    "rho_inf": [
+      1.0,
+      0.5
+    ]
+  },
+  "forced_study": {
+    "dt_s": 0.02,
+    "steps": 600,
+    "rho_inf": 1.0,
+    "force_N": "[0.8*sin(1.2*t), 0]"
+  },
+  "metrics": {
+    "undamped_rho1_max_relative_energy_drift": 6.628031457012185e-14,
+    "exact_max_relative_energy_drift": 5.775824263309914e-12,
+    "rho05_low_mode_energy_retention": 0.999309483993535,
+    "rho05_high_mode_energy_retention": 8.536831278762326e-29,
+    "forced_rho1_max_normalized_budget_defect": 7.526659034590902e-14,
+    "rho05_high_frequency_spectral_radius": 0.5000168476331621,
+    "max_sampled_spectral_radius": 1.000000000000251,
+    "finest_observed_order": 1.9983497976043745
+  },
+  "convergence": [
+    {
+      "dt_s": 0.004,
+      "relative_state_error": 0.3455822768150905,
+      "order": null
+    },
+    {
+      "dt_s": 0.002,
+      "relative_state_error": 0.09435672748646494,
+      "order": 1.87283194229653
+    },
+    {
+      "dt_s": 0.001,
+      "relative_state_error": 0.023794553666130557,
+      "order": 1.987493990439748
+    },
+    {
+      "dt_s": 0.0005,
+      "relative_state_error": 0.0059554465592260636,
+      "order": 1.9983497976043745
+    }
+  ],
+  "checks": {
+    "undamped_energy_conserved": true,
+    "reference_energy_conserved": true,
+    "forced_discrete_budget_closes": true,
+    "high_mode_filtered": true,
+    "low_mode_retained": true,
+    "second_order_recovered": true,
+    "high_frequency_limit_matches": true,
+    "sampled_spectral_stability": true
+  },
+  "interpretation": "Signed budget defect includes discretization and quadrature error; it is not a monotone generalized-alpha algorithmic energy."
+}
