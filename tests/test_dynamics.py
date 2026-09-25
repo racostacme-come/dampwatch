@@ -222,3 +222,31 @@ def test_load_is_sampled_once_at_every_endpoint():
 
     r = integrate(oscillator(), [1], [0], dt=0.1, steps=4, force=force)
     assert_allclose(calls, r.time)
+
+
+@pytest.mark.parametrize("rho", [0.0, 0.5, 1.0])
+def test_manufactured_time_dependent_load(rho):
+    s = System([[2, 0.2], [0.2, 1]], [[0.6, 0.2], [0.2, 0.3]], [[8, -2], [-2, 3]])
+    frequency = np.array([1.3, 2.7])
+
+    def force(t):
+        u = np.sin(frequency * t)
+        v = frequency * np.cos(frequency * t)
+        a = -(frequency**2) * u
+        return s.mass @ a + s.damping @ v + s.stiffness @ u
+
+    errors = []
+    for steps in (100, 200, 400):
+        r = integrate(s, [0, 0], frequency, dt=2 / steps, steps=steps, rho_inf=rho, force=force)
+        expected = np.sin(r.time[:, None] * frequency)
+        errors.append(np.max(np.abs(r.displacement - expected)))
+    assert np.all(np.log2(np.array(errors[:-1]) / errors[1:]) > 1.9)
+
+
+@pytest.mark.parametrize("rho", [0.0, 0.5, 1.0])
+def test_static_equilibrium_is_preserved(rho):
+    r = integrate(
+        oscillator(0.3), [0.5], [0], dt=0.3, steps=100, rho_inf=rho, force=lambda t: [4.0]
+    )
+    assert_allclose(r.displacement, 0.5, atol=2e-15)
+    assert_allclose(r.velocity, 0, atol=2e-15)
