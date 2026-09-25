@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dampwatch"
+version = "0.1.0"
+description = "A reproducible audit of physical and numerical damping in structural dynamics"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["numpy>=2,<3", "scipy>=1.14,<2", "matplotlib>=3.9,<4"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "pytest-cov>=6,<8", "ruff>=0.11,<1", "build>=1.2,<2"]
+
+[project.scripts]
+dampwatch = "dampwatch.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dampwatch"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "examples", "docs", "results", "README.md", "LICENSE", "CONTRIBUTING.md", "pyproject.toml", "requirements-repro.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --basetemp=.pytest-tmp"
+
+[tool.ruff]
+line-length = 96
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
