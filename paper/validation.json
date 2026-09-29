@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "pages": 3,
+  "page_limit": 5,
+  "engine": "tectonic",
+  "overfull_boxes": 0,
+  "undefined_references": 0,
+  "inputs_sha256": {
+    "paper/paper.tex": "ad415bc96402360fca5efd0b690fb8ee209f6aad83b71b06e5ed63943a8b0d76",
+    "paper/figure.pdf": "fdca99aabf4dc78b304bf09f0e2b7c38ff6e24ed1becb5159ab4da456d317385",
+    "paper/plot.py": "c8e86941e498b58aab5f358893acc6b54d96dac86b6f50c25a92b2d4bf6b9079",
+    "results/convergence.csv": "ba73e5de8db7f4b9dc988ce396ff4dfdee0149ab9666c2a5a2c7a07b3c219114",
+    "results/forced_budget.csv": "43d356c752c4b5b589843220463e0d097300a4ab0b00a19a347a8ce9ee405d30",
+    "results/free_response.csv": "53731e61eb2bc6a2afcba8b83e41f3fccbe726f79cbe37d7817b675ee5aaa45c",
+    "results/spectral_radius.csv": "437b49cfa9147fe37866e47873ba7cd0fffffafdb5092fe316ca156de52b0ad8",
+    "results/validation.json": "54672942699cd8dc29622483f16916b0487000919b0e2fc12bd95175d7f18295"
+  }
+}

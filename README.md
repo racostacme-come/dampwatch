@@ -210,3 +210,9 @@ concepts using public references. All example data are synthetic. [MIT license](
   definitions and convention caveat.
 - [SciPy matrix exponential](https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.expm.html):
   independent state-space reference.
+
+## Academic paper
+
+Read the [research note (PDF)](paper/paper.pdf), edit the [LaTeX source](paper/paper.tex),
+or follow the [compilation instructions](paper/README.md). The manuscript includes
+methods, measured validation, limitations, and references within five pages.
